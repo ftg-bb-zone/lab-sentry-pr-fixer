@@ -42,3 +42,6 @@ out/
 ### Claude Agents ###
 .claude/**
 docs/**
+
+### Docker ###
+.env
