@@ -12,7 +12,7 @@ env:
   ECS_CLUSTER: mangonaut-cluster-commonvpn
   ECS_SERVICE: mangonaut-sentry-fixer-commonvpn
   TASK_DEFINITION: mangonaut-sentry-fixer-commonvpn
-  CONTAINER_NAME: mangonaut-sentry-fixer-commonvpn
+  CONTAINER_NAME: sentry-fixer
 
 jobs:
   build-and-push:
