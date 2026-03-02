@@ -24,6 +24,7 @@ class WebClientConfig(
             .baseUrl(properties.sentry.baseUrl)
             .defaultHeader(HttpHeaders.AUTHORIZATION, "Bearer ${properties.sentry.token}")
             .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+            .codecs { it.defaultCodecs().maxInMemorySize(MAX_BUFFER_SIZE) }
             .build()
     }
 
@@ -34,7 +35,7 @@ class WebClientConfig(
             .defaultHeader(HttpHeaders.ACCEPT, "application/vnd.github+json")
             .defaultHeader("X-GitHub-Api-Version", "2022-11-28")
             .filter(githubAuthFilter())
-            .codecs { it.defaultCodecs().maxInMemorySize(2 * 1024 * 1024) }
+            .codecs { it.defaultCodecs().maxInMemorySize(MAX_BUFFER_SIZE) }
             .build()
     }
 
@@ -55,6 +56,11 @@ class WebClientConfig(
             .defaultHeader("x-api-key", properties.llm.apiKey)
             .defaultHeader("anthropic-version", "2023-06-01")
             .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+            .codecs { it.defaultCodecs().maxInMemorySize(MAX_BUFFER_SIZE) }
             .build()
+    }
+
+    companion object {
+        private const val MAX_BUFFER_SIZE = 2 * 1024 * 1024 // 2MB
     }
 }
