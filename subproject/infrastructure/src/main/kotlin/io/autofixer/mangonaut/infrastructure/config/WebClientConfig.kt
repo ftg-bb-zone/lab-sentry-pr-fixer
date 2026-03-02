@@ -34,6 +34,7 @@ class WebClientConfig(
             .defaultHeader(HttpHeaders.ACCEPT, "application/vnd.github+json")
             .defaultHeader("X-GitHub-Api-Version", "2022-11-28")
             .filter(githubAuthFilter())
+            .codecs { it.defaultCodecs().maxInMemorySize(2 * 1024 * 1024) }
             .build()
     }
 
