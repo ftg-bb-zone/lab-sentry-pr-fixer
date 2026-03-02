@@ -23,17 +23,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup SSH for submodule
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SUBMODULE_SSH_KEY }}
-
-      - name: Configure submodule URL rewrite
-        run: git config --global url."git@github.com:".insteadOf "org-61858831@github.com:"
-
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
