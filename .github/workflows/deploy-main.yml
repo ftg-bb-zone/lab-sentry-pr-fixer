@@ -1,9 +1,9 @@
-name: Deploy to Dev
+name: Deploy to Main
 
 on:
   push:
     branches:
-      - dev
+      - main
 
 env:
   AWS_REGION: ap-northeast-2
